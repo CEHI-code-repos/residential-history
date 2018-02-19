@@ -10,5 +10,8 @@ if __name__ == '__main__':
         htmlcontext = urlopen(args.url)
     except HTTPError as e:
         print("Error appears as followings: \n", e)
+        htmlcontext = None
     else:
         print(htmlcontext.read())
+    if htmlcontext == None:
+        print("Somethings went wrong, please check the entered url.")
