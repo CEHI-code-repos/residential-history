@@ -67,15 +67,15 @@ for i in range(len(firstName)):
     if len(outPutSubData)==1:
         for link in bsObj.find("table", {"id":"datagrid_results"}).findAll("span"):
             outPutSubData1.append(link.text)
-    elif len(outPutSubData)==0:
-        countCannotFind.append(i)
-    elif len(outPutSubData)>1:
-        multipleResult.append(i)
         #print(outPutSubData1)
         row = str(NPI[i]) + ',' + outPutSubData1[1]+ ',' + outPutSubData1[2] + ',' + outPutSubData1[3] + ',' + str(taxnCode[i]) + '\n'
         outPutSubData1 = []
         csv.write(row)
         print(row)
+    elif len(outPutSubData)==0:
+        countCannotFind.append(i)
+    elif len(outPutSubData)>1:
+        multipleResult.append(i)
     #print(outPutData)
     outPutSubData = []
     #for link in bsObj.find("table", {"id":"datagrid_results"}).findAll("span"):
