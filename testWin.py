@@ -27,8 +27,10 @@ outPutSubData = []
 #time.sleep(6)
 outPutSubData1 = []
 csv = open('123', "w") 
-columnTitleRow = "NPI, 'Profession', 'License Type', 'Taxonomy Code' \n"
+columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy Code' \n"
 csv.write(columnTitleRow)
+countCannotFind=[]
+multipleResult=[]
 for i in range(len(firstName)):
     indicidor = 0
     try:
@@ -65,8 +67,12 @@ for i in range(len(firstName)):
     if len(outPutSubData)==1:
         for link in bsObj.find("table", {"id":"datagrid_results"}).findAll("span"):
             outPutSubData1.append(link.text)
+    elif len(outPutSubData)==0:
+        countCannotFind.append(i)
+    elif len(outPutSubData)>1:
+        multipleResult.append(i)
         #print(outPutSubData1)
-        row = str(NPI[i]) + ',' + outPutSubData1[1]+ ',' + outPutSubData1[2] + ',' + str(taxnCode[i]) + '\n'
+        row = str(NPI[i]) + ',' + outPutSubData1[1]+ ',' + outPutSubData1[2] + ',' + outPutSubData1[3] + ',' + str(taxnCode[i]) + '\n'
         outPutSubData1 = []
         csv.write(row)
         print(row)
@@ -80,3 +86,8 @@ for i in range(len(firstName)):
     driver.close()
 
 
+print("Those whose information cannot be find are:\n")
+print(countCannotFind)
+print("\n\n")
+print("Those who have more than one results are: \n")
+print(multipleResult)
