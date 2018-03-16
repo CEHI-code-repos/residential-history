@@ -38,6 +38,7 @@ columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy 
 csv.write(columnTitleRow)
 countCannotFind=[]
 multipleResult=[]
+numberSuccessfully = 0
 for i in range(round(len(firstName)/2)):
 #for i in range(20):
     if i % 10 ==0:
@@ -47,6 +48,7 @@ for i in range(round(len(firstName)/2)):
     #indicidor = 0
     if data['Entity Type Code'][i] == 1:
         try:
+            numberSuccessfully +=1
             driver=webdriver.Chrome(chrome_path,chrome_options=chrome_options)
             driver.get("https://newjersey.mylicense.com/verification_4_6/Search.aspx?facility=N")
         #driver.maximize_window()
@@ -112,8 +114,8 @@ print("Those who have more than one results are: \n")
 print(multipleResult)
 '''
 
-print("There are totally %d samples were used\n%d of their information cannot be found\n%d of their information have more than one result" %(i,len(countCannotFind),len(multipleResult)))
-print("The rate for not having the information is %f \nThe rate for having multiple result is %f" %(len(countCannotFind)/i, len(multipleResult)/i))
+print("There are totally %d samples were used\n%d of their information cannot be found\n%d of their information have more than one result" %(numberSuccessfully,len(countCannotFind),len(multipleResult)))
+print("The rate for not having the information is %f \nThe rate for having multiple result is %f" %(len(countCannotFind)/numberSuccessfully, len(multipleResult)/numberSuccessfully))
 print("It took " + str(datetime.datetime.now()-startTime) + " to run the script.")
 
 csv1 = open('countCannotFind', "w")
