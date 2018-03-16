@@ -9,6 +9,8 @@ import re
 import datetime
 chrome_options = Options()  
 chrome_options.add_argument("--headless")
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_experimental_option("excludeSwitches",["ignore-certificate-errors"])
 #user = "leongmanchong@hotmail.com"
 firstName = ""
 lastName = ""
@@ -88,7 +90,7 @@ for i in range(round(len(data['NPI'])/2)):
             for link in bsObj.find("table", {"id":"datagrid_results"}).findAll("span"):
                 outPutSubData1.append(link.text)
         #print(outPutSubData1)
-            row = str(data['NPI'][i]) + ',' + outPutSubData1[1]+ ',' + outPutSubData1[2] + ',' + outPutSubData1[3] + ',' + str(data['Healthcare Provider Taxonomy Code_1'][i])
+            row = str(data['NPI'][i]) + ',' + outPutSubData1[1]+ ',' + outPutSubData1[2] + ',' + outPutSubData1[3] + ',' + str(data['Healthcare Provider Taxonomy Code_1'][i]) + "\n"
             outPutSubData1 = []
             csv.write(row)
             #print(row)
