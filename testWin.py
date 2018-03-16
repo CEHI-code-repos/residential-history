@@ -39,7 +39,7 @@ csv.write(columnTitleRow)
 countCannotFind=[]
 multipleResult=[]
 numberSuccessfully = 0
-for i in range(round(len(firstName)/2)):
+for i in range(round(len(data['NPI'])/2)):
 #for i in range(20):
     if i % 10 ==0:
         datetime.datetime.now()
