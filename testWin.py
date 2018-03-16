@@ -13,12 +13,12 @@ chrome_options.add_argument("--headless")
 firstName = ""
 lastName = ""
 cityName = ""
-#chrome_path="C:\\Users\\ml69\\Desktop\\chromedriver.exe"
-chrome_path="/Users/manchongleong/Desktop/Taxonomy/chromedriver"
+chrome_path="C:\\Users\\ml69\\Desktop\\chromedriver.exe"
+#chrome_path="/Users/manchongleong/Desktop/Taxonomy/chromedriver"
 #fileName = ""
-fileName = "/Users/manchongleong/Desktop/Crate/Geodata/US/National_Provider_Identifier/NPIDatabase_2015/NPPES_Data_Dissemination_July_2015/Original_state/State_NJ.csv"
+#fileName = "/Users/manchongleong/Desktop/Crate/Geodata/US/National_Provider_Identifier/NPIDatabase_2015/NPPES_Data_Dissemination_July_2015/Original_state/State_NJ.csv"
 #fileName = ""
-#fileName = "C:\\Users\\ml69\\Desktop\\State_NJ.csv"
+fileName = "C:\\Users\\ml69\\Desktop\\State_NJ.csv"
 data = pd.read_csv(fileName, low_memory=False)[['NPI','Entity Type Code','Provider Last Name (Legal Name)','Provider First Name','Provider Business Practice Location Address City Name','Healthcare Provider Taxonomy Code_1']]
 startTime=datetime.datetime.now()
 #NPI = data['NPI'].tolist()
@@ -38,7 +38,7 @@ columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy 
 csv.write(columnTitleRow)
 countCannotFind=[]
 multipleResult=[]
-for i in range(len(firstName)/2):
+for i in range(round(len(firstName)/2)):
 #for i in range(20):
     if i % 10 ==0:
         datetime.datetime.now()
