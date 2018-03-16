@@ -32,7 +32,7 @@ csv.write(columnTitleRow)
 countCannotFind=[]
 multipleResult=[]
 #for i in range(len(firstName)):
-for i in range(5000,5500,1)
+for i in range(5000,5500,1):
     indicidor = 0
     try:
         driver=webdriver.Chrome(chrome_path)
