@@ -106,10 +106,10 @@ for i in range(round(len(data['NPI'])/2)):
             #print(outPutSubData)
         elif len(outPutSubData)==0:
             countCannotFind.append(i+2)
-            csv.write(str(data['NPI'][i])+',')
+            csv1.write(str(data['NPI'][i])+',')
         elif len(outPutSubData)>1:
             multipleResult.append(i+2)
-            csv.write(str(data['NPI'][i])+',')
+            csv2.write(str(data['NPI'][i])+',')
     #print(outPutData)
         outPutSubData = []
     #for link in bsObj.find("table", {"id":"datagrid_results"}).findAll("span"):
