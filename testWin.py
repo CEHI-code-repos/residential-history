@@ -8,8 +8,8 @@ import re
 #from time import gmtime, strftime
 import datetime
 chrome_options = Options()  
-chrome_options.add_argument("--headless")
-chrome_options.add_argument('--disable-gpu')
+#chrome_options.add_argument("--headless")
+#chrome_options.add_argument('--disable-gpu')
 chrome_options.add_experimental_option("excludeSwitches",["ignore-certificate-errors"])
 #user = "leongmanchong@hotmail.com"
 firstName = ""
