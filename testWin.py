@@ -80,9 +80,14 @@ for i in range(round(len(data['NPI'])/2)):
 #for link in bsObj.find("td", {"id":"datagrip_results"}).findAll("a",id=re.compile("^(datagrip_results).*")):
 #for link in bsObj.findAll("a", {"id":re.compile("^(datagrip_results).*")}):
 #for link in bsObj:
-        for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
-#        print(link.text)
-            outPutSubData.append(link.text)
+        try:
+            for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
+#            print(link.text)
+                outPutSubData.append(link.text)
+        except TypeError as e:
+            print("error is: ")
+            print(e)
+            continue
     #outPutData.append(outPutSubData)
         #print(i)
         #print(outPutSubData)
