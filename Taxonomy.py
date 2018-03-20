@@ -33,9 +33,13 @@ startTime=datetime.datetime.now()
 outPutSubData = []
 #time.sleep(6)
 outPutSubData1 = []
-csv = open('123', "w") 
+csv = open('Result', "w") 
 columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy Code' \n"
 csv.write(columnTitleRow)
+csv1 = open('countCannotFind', "w")
+#csv1.write(','.join(str(x) for x in countCannotFind))
+csv2 = open('multipleResult', "w")
+#csv2.write(','.join(str(x) for x in multipleResult))
 countCannotFind=[]
 multipleResult=[]
 numberSuccessfully = 1
@@ -61,8 +65,6 @@ for i in range(round(len(firstName)/2)):
             print(e)
             driver.close()
             continue
-
-
         elem.send_keys(Keys.RETURN)
         html = driver.page_source
         bsObj = BeautifulSoup(html,"html.parser")
@@ -76,8 +78,10 @@ for i in range(round(len(firstName)/2)):
             csv.write(row)
         elif len(outPutSubData)==0:
             countCannotFind.append(i+2)
+            csv1.write(data['NPI'][i])
         elif len(outPutSubData)>1:
             multipleResult.append(i+2)
+            csv2.write(data['NPI'][i])
         outPutSubData = []
         driver.close()
 
@@ -85,11 +89,6 @@ for i in range(round(len(firstName)/2)):
 print("There are totally %d samples were used\n%d of their information cannot be found\n%d of their information have more than one result" %(numberSuccessfully,len(countCannotFind),len(multipleResult)))
 print("The rate for not having the information is %f \nThe rate for having multiple result is %f" %(len(countCannotFind)/numberSuccessfully, len(multipleResult)/numberSuccessfully))
 print("It took " + str(datetime.datetime.now()-startTime) + " to run the script.")
-
-csv1 = open('countCannotFind', "w")
-csv1.write(','.join(str(x) for x in countCannotFind))
-csv2 = open('multipleResult', "w")
-csv2.write(','.join(str(x) for x in multipleResult))
 
 
 
