@@ -35,7 +35,7 @@ startTime=datetime.datetime.now()
 outPutSubData = []
 #time.sleep(6)
 outPutSubData1 = []
-csv = open('123', "w") 
+csv = open('Result', "w") 
 columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy Code' \n"
 csv.write(columnTitleRow)
 csv1 = open('countCannotFind', "w")
