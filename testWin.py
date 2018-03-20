@@ -38,6 +38,10 @@ outPutSubData1 = []
 csv = open('123', "w") 
 columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy Code' \n"
 csv.write(columnTitleRow)
+csv1 = open('countCannotFind', "w")
+#csv1.write(','.join(str(x) for x in countCannotFind))
+csv2 = open('multipleResult', "w")
+#csv2.write(','.join(str(x) for x in multipleResult))
 countCannotFind=[]
 multipleResult=[]
 numberSuccessfully = 0
@@ -102,8 +106,10 @@ for i in range(round(len(data['NPI'])/2)):
             #print(outPutSubData)
         elif len(outPutSubData)==0:
             countCannotFind.append(i+2)
+            csv.write(str(data['NPI'][i])+',')
         elif len(outPutSubData)>1:
             multipleResult.append(i+2)
+            csv.write(str(data['NPI'][i])+',')
     #print(outPutData)
         outPutSubData = []
     #for link in bsObj.find("table", {"id":"datagrid_results"}).findAll("span"):
@@ -125,10 +131,10 @@ print("There are totally %d samples were used\n%d of their information cannot be
 print("The rate for not having the information is %f \nThe rate for having multiple result is %f" %(len(countCannotFind)/numberSuccessfully, len(multipleResult)/numberSuccessfully))
 print("It took " + str(datetime.datetime.now()-startTime) + " to run the script.")
 
-csv1 = open('countCannotFind', "w")
-csv1.write(','.join(str(x) for x in countCannotFind))
-csv2 = open('multipleResult', "w")
-csv2.write(','.join(str(x) for x in multipleResult))
+csv3 = open('countCannotFind_all', "w")
+csv3.write(','.join(str(x) for x in countCannotFind))
+csv4 = open('multipleResult_all', "w")
+csv4.write(','.join(str(x) for x in multipleResult))
 
 
 
