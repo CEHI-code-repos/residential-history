@@ -47,9 +47,9 @@ multipleResult=[]
 numberSuccessfully = 0
 for i in range(round(len(data['NPI'])/2)):
 #for i in range(20):
-    if i % 10 ==0:
+    if numberSuccessfully % 10 ==0:
         datetime.datetime.now()
-        print("Running i = %d" %(i))
+        print("Finished Running: %d" %(numberSuccessfully))
         print(datetime.datetime.now()-startTime)
     #indicidor = 0
     if data['Entity Type Code'][i] == 1:
