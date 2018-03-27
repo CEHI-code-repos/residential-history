@@ -45,7 +45,7 @@ csv2 = open('multipleResult', "w")
 countCannotFind=[]
 multipleResult=[]
 numberSuccessfully = 0
-for i in range(round(len(data['NPI'])/2)):
+for i in range(60318,len(data['NPI'])):
 #for i in range(20):
     if numberSuccessfully % 10 ==0:
         datetime.datetime.now()
@@ -67,9 +67,9 @@ for i in range(round(len(data['NPI'])/2)):
             elem = driver.find_element_by_id("t_web_lookup__addr_city")
         #elem.send_keys(cityName[i])
             elem.send_keys(data['Provider Business Practice Location Address City Name'][i])
-        except TypeError as e:
-            print("error is: ")
-            print(e)
+        except:
+            print("error")
+            #print(e)
             driver.close()
         #outPutData.append([])
             continue
@@ -88,9 +88,9 @@ for i in range(round(len(data['NPI'])/2)):
             for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
 #            print(link.text)
                 outPutSubData.append(link.text)
-        except TypeError as e:
-            print("error is: ")
-            print(e)
+        except:
+            print("error")
+            #print(e)
             continue
     #outPutData.append(outPutSubData)
         #print(i)
