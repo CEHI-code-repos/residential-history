@@ -45,7 +45,7 @@ csv2 = open('multipleResult', "w")
 countCannotFind=[]
 multipleResult=[]
 numberSuccessfully = 0
-for i in range(60318,len(data['NPI'])):
+for i in range(83778,len(data['NPI'])):
 #for i in range(20):
     if numberSuccessfully % 10 ==0:
         datetime.datetime.now()
