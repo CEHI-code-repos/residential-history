@@ -48,7 +48,7 @@ for i in range(len(inputData)):
     print(html)
     print("\n\n\n")
     print(bsObj)
-        '''
+    '''
         for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
             outPutSubData.append(link.text)
         if len(outPutSubData)==1:
@@ -64,7 +64,7 @@ for i in range(len(inputData)):
             multipleResult.append(i+2)
             csv2.write(data['NPI'][i])
         outPutSubData = []
-        '''
+    '''
     driver.close()
 
 '''
