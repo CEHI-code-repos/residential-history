@@ -8,7 +8,7 @@ import re
 #from time import gmtime, strftime
 import datetime
 chrome_options = Options()  
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 chrome_path="C:\\Users\\ml69\\Desktop\\chromedriver.exe"
 fileName = "C:\\Users\\ml69\\Desktop\\nameCEHI.csv"
 rawData = pd.read_csv(fileName, low_memory=False)
@@ -41,7 +41,7 @@ for i in range(len(inputData)):
     html = driver.page_source
     bsObj = BeautifulSoup(html,"html.parser")
     with open("./" + inputData[i] + ".html", "w") as f:
-        f.write(bsObj)
+        f.write(html)
         '''
         for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
             outPutSubData.append(link.text)
