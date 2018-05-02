@@ -14,6 +14,6 @@ for i in range(len(inputData)):
     elem.send_keys(Keys.RETURN)
     time.sleep(2)
     dr.find_element_by_xpath('//*[@id="match_results"]/div[2]/div[1]/div[2]/div[1]/a').click()
-    with open('./' + inputDate + '.html', "w") as f:
+    with open('./' + inputData[i] + '.html', "w") as f:
         f.write(dr.page_source)
     dr.close()
