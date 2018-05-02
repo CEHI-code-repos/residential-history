@@ -11,7 +11,8 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_path="C:\\Users\\ml69\\Desktop\\chromedriver.exe"
 fileName = "C:\\Users\\ml69\\Desktop\\nameCEHI.csv"
-inputData = pd.read_csv(fileName, low_memory=False)
+rawData = pd.read_csv(fileName, low_memory=False)
+inputData = rawData['Name'].tolist()
 startTime=datetime.datetime.now()
 #driver.implicitly_wait(5)
 #driver.switch_to.frame('fraPCSearch')
