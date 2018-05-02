@@ -18,14 +18,6 @@ startTime=datetime.datetime.now()
 outPutSubData = []
 #time.sleep(6)
 outPutSubData1 = []
-csv = open('Result', "w") 
-columnTitleRow = "NPI, 'Profession', 'License Type','License Status', 'Taxonomy Code' \n"
-csv.write(columnTitleRow)
-csv1 = open('countCannotFind', "w")
-csv2 = open('multipleResult', "w")
-#csv2.write(','.join(str(x) for x in multipleResult))
-countCannotFind=[]
-multipleResult=[]
 numberSuccessfully = 1
 for i in range(round(len(firstName)/2)):
 #for i in range(20):
@@ -33,23 +25,22 @@ for i in range(round(len(firstName)/2)):
         datetime.datetime.now()
         print("Running i = %d" %(i))
         print(datetime.datetime.now()-startTime)
-    if data['Entity Type Code'][i] == 1:
-        try:
-            numberSuccessfully +=1
-            driver=webdriver.Chrome(chrome_path,chrome_options=chrome_options)
-            driver.get("https://pipl.com/")
-            elem = driver.find_element_by_id("findall")
-            elem.send_keys(inputData)
-        except Exception as e:
-            print("error is: ")
-            print(e)
-            driver.close()
-            continue
-        elem.send_keys(Keys.RETURN)
-        html = driver.page_source
-        bsObj = BeautifulSoup(html,"html.parser")
-        with open("./" + inputData + ".html", "w") as f:
-            f.write(html)
+    try:
+        numberSuccessfully +=1
+        driver=webdriver.Chrome(chrome_path,chrome_options=chrome_options)
+        driver.get("https://pipl.com/")
+        elem = driver.find_element_by_id("findall")
+        elem.send_keys(inputData)
+    except Exception as e:
+        print("error is: ")
+        print(e)
+        driver.close()
+        continue
+    elem.send_keys(Keys.RETURN)
+    html = driver.page_source
+    bsObj = BeautifulSoup(html,"html.parser")
+    with open("./" + inputData + ".html", "w") as f:
+        f.write(html)
         '''
         for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
             outPutSubData.append(link.text)
@@ -67,13 +58,12 @@ for i in range(round(len(firstName)/2)):
             csv2.write(data['NPI'][i])
         outPutSubData = []
         '''
-        driver.close()
+    driver.close()
 
-
+'''
 print("There are totally %d samples were used\n%d of their information cannot be found\n%d of their information have more than one result" %(numberSuccessfully,len(countCannotFind),len(multipleResult)))
 print("The rate for not having the information is %f \nThe rate for having multiple result is %f" %(len(countCannotFind)/numberSuccessfully, len(multipleResult)/numberSuccessfully))
 print("It took " + str(datetime.datetime.now()-startTime) + " to run the script.")
-
-
+'''
 
 
