@@ -13,7 +13,7 @@ for i in range(len(inputData)):
     elem.send_keys(inputData[i])
     elem.send_keys(Keys.RETURN)
     time.sleep(2)
-    dr.find_element_by_xpath('//*[@id="content-container"]/div[2]/div[5]/div[1]/strong/a').click()
+    dr.find_element_by_xpath('//*[@id="searchResults"]/div[1]/div[1]/a[1]').click()
     with open('./' + inputData[i] + '.html', "w") as f:
         f.write(dr.page_source)
     dr.close()
