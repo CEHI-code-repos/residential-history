@@ -1,4 +1,5 @@
 from selenium import webdriver
+import pandas as pd
 from selenium.webdriver.common.keys import Keys
 import time
 fileName = '/Users/manchongleong/Desktop/nameCEHI.csv'
