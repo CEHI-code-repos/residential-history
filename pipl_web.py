@@ -38,6 +38,7 @@ for i in range(len(inputData)):
         driver.close()
         continue
     elem.send_keys(Keys.RETURN)
+    time.sleep(6)
     html = driver.page_source
     bsObj = BeautifulSoup(html,"html.parser")
     with open("./" + inputData[i] + ".html", "w") as f:
