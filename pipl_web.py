@@ -41,7 +41,7 @@ for i in range(len(inputData)):
     html = driver.page_source
     bsObj = BeautifulSoup(html,"html.parser")
     with open("./" + inputData[i] + ".html", "w") as f:
-        f.write(html)
+        f.write(bsObj)
         '''
         for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
             outPutSubData.append(link.text)
