@@ -45,7 +45,7 @@ csv2 = open('multipleResult', "w")
 countCannotFind=[]
 multipleResult=[]
 numberSuccessfully = 0
-for i in range(60318,len(data['NPI'])):
+for i in range(83778,len(data['NPI'])):
 #for i in range(20):
     if numberSuccessfully % 10 ==0:
         datetime.datetime.now()
@@ -77,10 +77,14 @@ for i in range(60318,len(data['NPI'])):
 
 #elem = driver.find_element_by_id("pass")
 #elem.send_keys(pwd)
-        elem.send_keys(Keys.RETURN)
+        try:
+            elem.send_keys(Keys.RETURN)
     #driver.implicitly_wait(5)
-        html = driver.page_source
-        bsObj = BeautifulSoup(html,"html.parser")
+            html = driver.page_source
+            bsObj = BeautifulSoup(html,"html.parser")
+        except:
+            print("error")
+            continue
 #for link in bsObj.find("td", {"id":"datagrip_results"}).findAll("a",id=re.compile("^(datagrip_results).*")):
 #for link in bsObj.findAll("a", {"id":re.compile("^(datagrip_results).*")}):
 #for link in bsObj:
