@@ -19,7 +19,7 @@ outPutSubData = []
 #time.sleep(6)
 outPutSubData1 = []
 numberSuccessfully = 1
-for i in range(round(len(firstName)/2)):
+for i in range(len(inputData)):
 #for i in range(20):
     if i % 10 ==0:
         datetime.datetime.now()
