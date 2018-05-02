@@ -46,8 +46,8 @@ for i in range(len(inputData)):
         f.write(html)
     '''
     print(html)
-    print("\n\n\n")
-    print(bsObj)
+    #print("\n\n\n")
+    #print(bsObj)
     '''
         for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
             outPutSubData.append(link.text)
@@ -65,7 +65,7 @@ for i in range(len(inputData)):
             csv2.write(data['NPI'][i])
         outPutSubData = []
     '''
-    driver.close()
+    #driver.close()
 
 '''
 print("There are totally %d samples were used\n%d of their information cannot be found\n%d of their information have more than one result" %(numberSuccessfully,len(countCannotFind),len(multipleResult)))
