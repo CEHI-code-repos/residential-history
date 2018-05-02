@@ -40,7 +40,7 @@ for i in range(len(inputData)):
     elem.send_keys(Keys.RETURN)
     html = driver.page_source
     bsObj = BeautifulSoup(html,"html.parser")
-    with open("./" + inputData + ".html", "w") as f:
+    with open("./" + inputData[i] + ".html", "w") as f:
         f.write(html)
         '''
         for link in bsObj.find("table", {"role":"presentation"}).findAll("a", id=re.compile("^(datagrid_results).*")):
